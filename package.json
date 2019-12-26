@@ -3,7 +3,7 @@
   "name": "ah-next-plugin",
   "description": "For booting a Next.JS React application inside of Actionhero",
   "license": "Apache-2.0",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "engines": {
     "node": ">=8.0.0"
   },
@@ -33,7 +33,7 @@
     "ws": "latest"
   },
   "scripts": {
-    "postinstall": "yarn build",
+    "prepare": "yarn build",
     "build": "yarn build-api && yarn build-web && yarn copy-dist",
     "build-api": "cd api && rm -rf dist && tsc --declaration",
     "build-web": "cd web && next build",
