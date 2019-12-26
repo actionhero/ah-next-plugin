@@ -1,7 +1,8 @@
 {
-  "author": "YOU <YOU@example.com>",
-  "name": "my_actionhero_project",
-  "description": "my actionhero project",
+  "author": "Evan Tahler <evan@delicioushat.com>",
+  "name": "ah-next-plugin",
+  "description": "For booting a Next.JS React application inside of Actionhero",
+  "license": "Apache-2.0",
   "version": "0.1.0",
   "engines": {
     "node": ">=8.0.0"
@@ -12,10 +13,19 @@
     "ioredis": "latest",
     "winston": "latest"
   },
+  "peerDependencies": {
+    "next": "any",
+    "react": "any",
+    "react-dom": "any"
+  },
   "devDependencies": {
     "@types/node": "latest",
+    "@types/react-dom": "latest",
     "@types/jest": "latest",
     "jest": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "next": "latest",
     "prettier": "latest",
     "ts-jest": "latest",
     "ts-node-dev": "latest",
