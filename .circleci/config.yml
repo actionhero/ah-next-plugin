@@ -1,0 +1,139 @@
+version: 2
+
+# Define common steps all parts of the test workflow use
+references:
+  ignored-branches: &ignored-branches
+    branches:
+      ignore:
+        - gh-pages
+
+  cache-options: &cache-options
+    key: package-cache-{{ .Branch }}-{{ .Revision }}
+
+# Define Jobs to run
+jobs:
+  build:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - restore_cache:
+          <<: *cache-options
+      - run:
+          name: yarn-install
+          command: yarn install
+      - run:
+          name: yarn-build
+          command: yarn build
+      - save_cache:
+          <<: *cache-options
+          paths:
+            - node_modules
+            - web/.next
+            - api/dist
+
+  linter-api:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - restore_cache:
+          <<: *cache-options
+      - run:
+          name: linter-api
+          command: yarn run lint-api
+
+  linter-web:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - restore_cache:
+          <<: *cache-options
+      - run:
+          name: linter-web
+          command: yarn run lint-web
+
+  test-api:
+    docker:
+      - image: circleci/node:12
+      - image: redis:latest
+    steps:
+      - checkout
+      - restore_cache:
+          <<: *cache-options
+      - run:
+          name: display-node-version
+          command: node --version
+      - run:
+          name: display-yarn-version
+          command: yarn --version
+      - run:
+          name: test
+          command: yarn run test-api
+
+  test-web:
+    docker:
+      - image: circleci/node:12
+      - image: redis:latest
+    steps:
+      - checkout
+      - restore_cache:
+          <<: *cache-options
+      - run:
+          name: display-node-version
+          command: node --version
+      - run:
+          name: display-yarn-version
+          command: yarn --version
+      - run:
+          name: test
+          command: yarn run test-web
+
+  complete:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - run:
+          name: complete
+          command: echo "Tests Complete!"
+
+# Run all the tests is parallel
+workflows:
+  version: 2
+  test-ah-next-plugin:
+    jobs:
+      - build:
+          filters:
+            <<: *ignored-branches
+
+      - linter-api:
+          filters:
+            <<: *ignored-branches
+          requires:
+            - build
+
+      - linter-web:
+          filters:
+            <<: *ignored-branches
+          requires:
+            - build
+
+      - test-api:
+          filters:
+            <<: *ignored-branches
+          requires:
+            - linter-api
+
+      - test-web:
+          filters:
+            <<: *ignored-branches
+          requires:
+            - linter-web
+
+      - complete:
+          filters:
+            <<: *ignored-branches
+          requires:
+            - test-web
+            - test-api
