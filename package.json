@@ -14,9 +14,9 @@
     "winston": "latest"
   },
   "peerDependencies": {
-    "next": "any",
-    "react": "any",
-    "react-dom": "any"
+    "next": "*",
+    "react": "*",
+    "react-dom": "*"
   },
   "devDependencies": {
     "@types/jest": "latest",
