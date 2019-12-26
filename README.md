@@ -1,5 +1,7 @@
 # AH-Next-Plugin
 
+[![CircleCI](https://circleci.com/gh/actionhero/ah-next-plugin.svg?style=svg)](https://circleci.com/gh/actionhero/ah-next-plugin)
+
 For booting a Next.JS React application inside of Actionhero.
 
 ## Why?
