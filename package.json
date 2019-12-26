@@ -3,17 +3,13 @@
   "name": "ah-next-plugin",
   "description": "For booting a Next.JS React application inside of Actionhero",
   "license": "Apache-2.0",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "engines": {
     "node": ">=8.0.0"
   },
-  "dependencies": {
-    "actionhero": "latest",
-    "ws": "latest",
-    "ioredis": "latest",
-    "winston": "latest"
-  },
+  "dependencies": {},
   "peerDependencies": {
+    "actionhero": "*",
     "next": "*",
     "react": "*",
     "react-dom": "*"
@@ -22,6 +18,8 @@
     "@types/jest": "latest",
     "@types/node": "latest",
     "@types/react-dom": "latest",
+    "actionhero": "latest",
+    "ioredis": "latest",
     "jest": "latest",
     "request-promise-native": "latest",
     "next": "latest",
@@ -30,7 +28,9 @@
     "react-dom": "latest",
     "ts-jest": "latest",
     "ts-node-dev": "latest",
-    "typescript": "latest"
+    "typescript": "latest",
+    "winston": "latest",
+    "ws": "latest"
   },
   "scripts": {
     "postinstall": "yarn build",
