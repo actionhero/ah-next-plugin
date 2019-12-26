@@ -1,10 +1,10 @@
 # ActionHero files
-pids/*
-tmp/*
-log/*
-cache/*
-coverage/*
-node_modules/*
+pids
+tmp
+log
+cache
+coverage
+node_modules
 locales/test-env-*
 public/javascript/ActionheroWebsocketClient.js
 public/javascript/ActionheroWebsocketClient.min.js
@@ -23,3 +23,6 @@ cache.dump
 # Editor-specific
 /nbproject/*
 /.idea/*
+
+# Next
+.next

@@ -38,9 +38,15 @@ export class Next extends Initializer {
       log("Running next in development mode...");
     }
 
+    if (!config.general.paths.next) {
+      throw new Error(
+        "configuration required for `config.general.paths.next = []`"
+      );
+    }
+
     api.next.app = next({
       dev: api.next.dev,
-      dir: path.join(__dirname, "..", "..", "..", "web")
+      dir: config.general.paths.next[0]
     });
 
     api.next.handle = api.next.app.getRequestHandler();

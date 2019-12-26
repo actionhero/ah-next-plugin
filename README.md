@@ -12,7 +12,7 @@ This project works by creating an action which, when requested by a client over 
 
 ## Configuration
 
-Your project will likely be configured with an `api` and `web` directory at the top level. The `api` directory would be the Actionhero project, and `web` would be the next project. Since Actionhero and Next have different ways of transpiling typescript (Actionhero use `typescript` while Next.js users `Babel`), it is important to have these 2 directories separate for the `build` step.
+Your project will likely be configured with an `api` and `web` directory at the top level. The `api` directory would be the Actionhero project, and `web` would be the next project. Since Actionhero and Next have different ways of transpiling typescript (Actionhero use `typescript` while Next.js users `Babel` to handle `.tsx` files), it is important to have these 2 directories separate for the `build` step. This project's layout is a good example of this.
 
 The `web` directory is a normal Next.JS project. No changes are needed.
 
@@ -60,7 +60,7 @@ In the `build` step of your project, be sure to also compile the next.js project
     "test-web": "cd web && jest",
     "lint": "yarn lint-api && yarn lint-web",
     "lint-api": "cd api && prettier --check src/**/*.ts __tests__/**/*.ts",
-    "lint-web": "cd web && prettier --check pages/**/*.tsx components/**/*.tsx classes/**/*.ts repositories/**/*.ts __tests__/**/*.tsx"
+    "lint-web": "cd web && prettier --check pages/**/*.tsx components/**/*.tsx __tests__/**/*.tsx"
   }
 }
 ```

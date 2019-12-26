@@ -19,33 +19,33 @@
     "react-dom": "any"
   },
   "devDependencies": {
+    "@types/jest": "latest",
     "@types/node": "latest",
     "@types/react-dom": "latest",
-    "@types/jest": "latest",
     "jest": "latest",
-    "react": "latest",
-    "react-dom": "latest",
+    "request-promise-native": "latest",
     "next": "latest",
     "prettier": "latest",
+    "react": "latest",
+    "react-dom": "latest",
     "ts-jest": "latest",
     "ts-node-dev": "latest",
     "typescript": "latest"
   },
   "scripts": {
-    "postinstall": "npm run build",
-    "dev": "ts-node-dev --no-deps --transpile-only ./node_modules/.bin/actionhero start",
-    "start": "actionhero start",
-    "actionhero": "actionhero",
-    "test": "jest",
-    "pretest": "npm run build && npm run lint",
-    "build": "tsc --declaration",
-    "lint": "prettier --check src/*/** __test__/*/**",
-    "pretty": "prettier --write src/*/** __test__/*/**"
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "transform": {
-      "^.+\\.ts?$": "ts-jest"
-    }
+    "postinstall": "yarn build",
+    "build": "yarn build-api && yarn build-web && yarn copy-dist",
+    "build-api": "cd api && rm -rf dist && tsc --declaration",
+    "build-web": "cd web && next build",
+    "copy-dist": "rm -rf dist && cp -r api/dist dist",
+    "start": "cd api && actionhero start",
+    "dev": "cd api && ts-node-dev --transpile-only --ignore-watch=\"../web\" --no-deps --notify=false ./../node_modules/.bin/actionhero start",
+    "test": "yarn test-api && yarn test-web",
+    "pretest": "yarn lint && yarn build",
+    "test-api": "cd api && jest",
+    "test-web": "echo 'no tests for react'",
+    "lint": "yarn lint-api && yarn lint-web",
+    "lint-api": "cd api && prettier --check src/**/*.ts __tests__/**/*.ts",
+    "lint-web": "cd web && prettier --check pages/**/*.tsx components/**/*.tsx __tests__/**/*.tsx"
   }
 }
