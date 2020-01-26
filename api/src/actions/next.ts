@@ -8,10 +8,11 @@ export class NextRender extends Action {
     this.outputExample = {};
     this.inputs = {};
     this.logLevel = "debug";
+    this.blockedConnectionTypes = ["websocket", "socket"];
   }
 
   async run(data) {
-    if(data.connection.rawConnection.responseHttpCode == 200){
+    if (data.connection.rawConnection.responseHttpCode == 200) {
       data.toRender = false;
       return api.next.render(data.connection);
     }
