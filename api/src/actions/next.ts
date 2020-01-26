@@ -11,7 +11,9 @@ export class NextRender extends Action {
   }
 
   async run(data) {
-    data.toRender = false;
-    return api.next.render(data.connection);
+    if(data.connection.rawConnection.responseHttpCode == 200){
+      data.toRender = false;
+      return api.next.render(data.connection);
+    }
   }
 }
