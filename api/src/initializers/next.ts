@@ -1,6 +1,5 @@
-import { Initializer, api, env, log, config, route } from "actionhero";
+import { Initializer, Connection, api, log, config, route } from "actionhero";
 import next from "next";
-import path from "path";
 
 export class Next extends Initializer {
   constructor() {
@@ -11,18 +10,17 @@ export class Next extends Initializer {
 
   async initialize() {
     api.next = {
-      render: async connection => {
+      render: async (connection: Connection) => {
         if (connection.type !== "web") {
           throw new Error('Connections for NEXT apps must be of type "web"');
         }
 
         const req = connection.rawConnection.req;
         const res = connection.rawConnection.res;
+
         return api.next.handle(req, res);
       }
     };
-
-    api.next.dev = env === "development";
 
     if (config.servers.web.enabled === true) {
       route.registerRoute("get", "/", "next:render", null, true);
@@ -34,7 +32,7 @@ export class Next extends Initializer {
       return;
     }
 
-    if (api.next.dev) {
+    if (config.next.dev) {
       log("Running next in development mode...");
     }
 
@@ -45,7 +43,8 @@ export class Next extends Initializer {
     }
 
     api.next.app = next({
-      dev: api.next.dev,
+      dev: config.next.dev,
+      quiet: config.next.quiet,
       dir: config.general.paths.next[0]
     });
 
