@@ -44,6 +44,7 @@ export class Next extends Initializer {
 
     api.next.app = next({
       dev: config.next.dev,
+      quiet: config.next.quiet,
       dir: config.general.paths.next[0]
     });
 

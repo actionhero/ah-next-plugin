@@ -63,6 +63,8 @@ export const DEFAULT = {
 };
 ```
 
+Learn more about the next.js app options here https://nextjs.org/docs/advanced-features/custom-server.
+
 That's it! Now if you visit the root URL of your Actionhero project, you will see Next rendering the contents of `pages/index.ts`!
 
 ## Deployment
