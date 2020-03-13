@@ -20,11 +20,11 @@ jobs:
       - restore_cache:
           <<: *cache-options
       - run:
-          name: yarn-install
-          command: yarn install
+          name: npm-install
+          command: npm install
       - run:
-          name: yarn-build
-          command: yarn build
+          name: npm-build
+          command: npm run build
       - save_cache:
           <<: *cache-options
           paths:
@@ -41,7 +41,7 @@ jobs:
           <<: *cache-options
       - run:
           name: linter-api
-          command: yarn run lint-api
+          command: npm run lint-api
 
   linter-web:
     docker:
@@ -52,7 +52,7 @@ jobs:
           <<: *cache-options
       - run:
           name: linter-web
-          command: yarn run lint-web
+          command: npm run lint-web
 
   test-api:
     docker:
@@ -66,11 +66,11 @@ jobs:
           name: display-node-version
           command: node --version
       - run:
-          name: display-yarn-version
-          command: yarn --version
+          name: display-npm-version
+          command: npm --version
       - run:
           name: test
-          command: yarn run test-api
+          command: npm run test-api
 
   test-web:
     docker:
@@ -84,11 +84,11 @@ jobs:
           name: display-node-version
           command: node --version
       - run:
-          name: display-yarn-version
-          command: yarn --version
+          name: display-npm-version
+          command: npm --version
       - run:
           name: test
-          command: yarn run test-web
+          command: npm run test-web
 
   complete:
     docker:
