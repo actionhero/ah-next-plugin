@@ -48,6 +48,20 @@ export const DEFAULT = {
 3. Change your default route in `config/servers/web.ts` to be "api" rather than "file" (we want to pass all file handling over to next)
 4. Change the location of `config.general.paths.public` (in `config/servers/api.ts`) to the public directory in your next.js project. Be sure to make this an array with one entry, for example: `[path.join(process.cwd(), "..", "web", "public")]`)
 5. Create a new `config.general.paths.next` (in `config/servers/api.ts`) to the location of your next.js project. Be sure to make this an array with one entry, for example: `[path.join(process.cwd(), "..", "web")]`)
+6. Create a new config file for next:
+
+```ts
+// from src/config/next.ts
+import { env } from "actionhero";
+
+export const DEFAULT = {
+  next: config => {
+    return {
+      dev: env === "development"
+    };
+  }
+};
+```
 
 That's it! Now if you visit the root URL of your Actionhero project, you will see Next rendering the contents of `pages/index.ts`!
 
