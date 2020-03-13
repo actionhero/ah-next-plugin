@@ -57,7 +57,8 @@ import { env } from "actionhero";
 export const DEFAULT = {
   next: config => {
     return {
-      dev: env === "development"
+      dev: env === "development",
+      quiet: false
     };
   }
 };
