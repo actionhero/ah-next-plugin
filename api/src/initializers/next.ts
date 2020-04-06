@@ -21,10 +21,6 @@ export class Next extends Initializer {
         return api.next.handle(req, res);
       },
     };
-
-    if (config.servers.web.enabled === true) {
-      route.registerRoute("get", "/", "next:render", null, true);
-    }
   }
 
   async start() {
@@ -50,6 +46,10 @@ export class Next extends Initializer {
 
     api.next.handle = api.next.app.getRequestHandler();
     await api.next.app.prepare();
+
+    if (config.servers.web.enabled === true) {
+      route.registerRoute("get", "/", "next:render", null, true);
+    }
   }
 
   async stop() {
