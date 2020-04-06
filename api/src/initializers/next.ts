@@ -4,7 +4,9 @@ import next from "next";
 export class Next extends Initializer {
   constructor() {
     super();
-    this.loadPriority = 9999;
+    this.loadPriority = 1000;
+    this.startPriority = 899;
+    this.startPriority = 101;
     this.name = "next";
   }
 
