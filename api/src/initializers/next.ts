@@ -19,7 +19,7 @@ export class Next extends Initializer {
         const res = connection.rawConnection.res;
 
         return api.next.handle(req, res);
-      }
+      },
     };
 
     if (config.servers.web.enabled === true) {
@@ -45,7 +45,7 @@ export class Next extends Initializer {
     api.next.app = next({
       dev: config.next.dev,
       quiet: config.next.quiet,
-      dir: config.general.paths.next[0]
+      dir: config.general.paths.next[0],
     });
 
     api.next.handle = api.next.app.getRequestHandler();

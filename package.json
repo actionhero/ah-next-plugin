@@ -45,7 +45,7 @@
     "test-api": "cd api && jest",
     "test-web": "echo 'no tests for react'",
     "lint": "npm run lint-api && npm run lint-web",
-    "lint-api": "cd api && prettier --check src/**/*.ts __tests__/**/*.ts",
-    "lint-web": "cd web && prettier --check pages/**/*.tsx components/**/*.tsx __tests__/**/*.tsx"
+    "lint-api": "cd api && prettier --check src __tests__",
+    "lint-web": "cd web && prettier --check pages"
   }
 }
