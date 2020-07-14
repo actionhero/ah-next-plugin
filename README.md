@@ -38,10 +38,10 @@ export const DEFAULT = {
           "..",
           "node_modules",
           "ah-next-plugin"
-        )
-      }
+        ),
+      },
     };
-  }
+  },
 };
 ```
 
@@ -52,15 +52,16 @@ export const DEFAULT = {
 
 ```ts
 // from src/config/next.ts
-import { env } from "actionhero";
+const env = process.env.NODE_ENV ? process.env.NODE_ENV : "development";
 
 export const DEFAULT = {
-  next: config => {
+  next: () => {
     return {
+      enabled: true,
       dev: env === "development",
-      quiet: false
+      quiet: false,
     };
-  }
+  },
 };
 ```
 
