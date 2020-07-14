@@ -48,7 +48,7 @@
     "test": "npm run test-api && npm run test-web",
     "pretest": "npm run lint && npm run build",
     "test-api": "cd api && jest",
-    "test-web": "echo 'no tests for react'",
+    "test-web": "cd web && jest",
     "lint": "npm run lint-api && npm run lint-web",
     "lint-api": "cd api && prettier --check src __tests__",
     "lint-web": "cd web && prettier --check pages"
