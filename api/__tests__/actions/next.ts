@@ -22,6 +22,6 @@ describe("ah-next-plugin", () => {
   test("can get HTML responses from next pages", async () => {
     const response = await request.get(url);
     expect(response).toContain("__NEXT_DATA__");
-    expect(response).toContain("Hello from Next.js and React!");
+    expect(response).toContain("Hello from Actionhero and Next.js!");
   });
 });

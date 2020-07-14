@@ -30,6 +30,11 @@ export class Next extends Initializer {
       return;
     }
 
+    if (!config.next.enabled) {
+      log("next disabled");
+      return;
+    }
+
     if (config.next.dev) {
       log("Running next in development mode...");
     }

@@ -7,6 +7,11 @@
   "engines": {
     "node": ">=8.0.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/actionhero/ah-next-plugin.git"
+  },
+  "homepage": "http://www.actionherojs.com",
   "dependencies": {},
   "peerDependencies": {
     "actionhero": "*",
@@ -15,22 +20,22 @@
     "react-dom": "*"
   },
   "devDependencies": {
-    "@types/jest": "latest",
-    "@types/node": "latest",
-    "@types/react-dom": "latest",
-    "actionhero": "latest",
-    "ioredis": "latest",
-    "jest": "latest",
-    "request-promise-native": "latest",
-    "next": "latest",
-    "prettier": "latest",
+    "@types/jest": "^26.0.4",
+    "@types/node": "^14.0.23",
+    "@types/react-dom": "^16.9.8",
+    "actionhero": "^23.0.4",
+    "ioredis": "^4.17.3",
+    "jest": "^26.1.0",
+    "next": "^9.4.4",
+    "prettier": "^2.0.5",
     "react": "latest",
     "react-dom": "latest",
-    "ts-jest": "latest",
-    "ts-node-dev": "latest",
-    "typescript": "latest",
-    "winston": "latest",
-    "ws": "latest"
+    "request-promise-native": "latest",
+    "ts-jest": "^26.1.2",
+    "ts-node-dev": "^1.0.0-pre.51",
+    "typescript": "^3.9.6",
+    "winston": "^3.3.3",
+    "ws": "^7.3.1"
   },
   "scripts": {
     "prepare": "npm run build",
@@ -43,7 +48,7 @@
     "test": "npm run test-api && npm run test-web",
     "pretest": "npm run lint && npm run build",
     "test-api": "cd api && jest",
-    "test-web": "echo 'no tests for react'",
+    "test-web": "cd web && jest",
     "lint": "npm run lint-api && npm run lint-web",
     "lint-api": "cd api && prettier --check src __tests__",
     "lint-web": "cd web && prettier --check pages"
