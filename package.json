@@ -33,7 +33,7 @@
     "request-promise-native": "latest",
     "ts-jest": "^26.1.2",
     "ts-node-dev": "^1.0.0-pre.51",
-    "typescript": "^3.9.6",
+    "typescript": "^4.0.2",
     "winston": "^3.3.3",
     "ws": "^7.3.1"
   },
