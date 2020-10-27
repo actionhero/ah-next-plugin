@@ -1,5 +1,14 @@
 import { Initializer, Connection, api, log, config, route } from "actionhero";
-import next from "next";
+
+declare module "actionhero" {
+  export interface Api {
+    next: {
+      app?: any;
+      render?: (Connection) => void;
+      handle?: (req, res) => void;
+    };
+  }
+}
 
 export class Next extends Initializer {
   constructor() {
@@ -45,7 +54,10 @@ export class Next extends Initializer {
       );
     }
 
-    api.next.app = next({
+    // we don't want to statically import next until we know we need it. It loads a lot and has problems in test mode
+    const next = await import("next");
+
+    api.next.app = next.default({
       dev: config.next.dev,
       quiet: config.next.quiet,
       dir: config.general.paths.next[0],
