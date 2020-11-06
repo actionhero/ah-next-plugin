@@ -91,3 +91,14 @@ In the `build` step of your project, be sure to also compile the next.js project
   }
 }
 ```
+
+# Dev command alternative
+
+`ts-node-dev` doesn't always play nice with next.js, leading to crashes after every change in `../web`.
+Replacing `ts-node-dev` with a combination of `nodemon` and `ts-node` (`npm install ts-node nodemon --save-dev`) should fix this issue with the following command:
+
+```json
+{
+  "dev": "cd api && nodemon -e js,jsx,ts,tsx --signal SIGTERM --ignore dist --watch ./src --exec \"ts-node\" --transpile-only --log-error ./src/server"
+}
+```
