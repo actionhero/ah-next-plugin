@@ -15,7 +15,7 @@
   "dependencies": {},
   "peerDependencies": {
     "actionhero": ">=22",
-    "next": "^9 || ^10",
+    "next": "^9.x || ^10.x",
     "react": "^16.6.0 || ^17",
     "react-dom": "^16.6.0 || ^17"
   },
