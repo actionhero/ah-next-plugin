@@ -14,7 +14,7 @@ This project works by creating an action which, when requested by a client over 
 
 ## Configuration
 
-Your project will likely be configured with an `api` and `web` directory at the top level. The `api` directory would be the Actionhero project, and `web` would be the next project. Since Actionhero and Next have different ways of transpiling typescript (Actionhero use `typescript` while Next.js users `Babel` to handle `.tsx` files), it is important to have these 2 directories separate for the `build` step. This project's layout is a good example of this.
+Your project will likely be configured with an `api` and `web` directory at the top level. The `api` directory would be the Actionhero project, and `web` would be the next project. Since Actionhero and Next have different ways of transpiling typescript (Actionhero use `typescript` while Next.js uses `Babel` to handle `.tsx` files), it is important to have these 2 directories separate for the `build` step. This project's layout is a good example of this.
 
 The `web` directory is a normal Next.JS project. No changes are needed.
 
