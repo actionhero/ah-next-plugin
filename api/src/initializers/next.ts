@@ -23,7 +23,7 @@ export class Next extends Initializer {
     api.next = {
       render: async (connection: Connection) => {
         if (connection.type !== "web") {
-          throw new Error('Connections for NEXT apps must be of type "web"');
+          throw new Error('Connections for next.js apps must be of type "web"');
         }
 
         const { req, res } = connection.rawConnection;
