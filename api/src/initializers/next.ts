@@ -26,18 +26,14 @@ export class Next extends Initializer {
           throw new Error('Connections for NEXT apps must be of type "web"');
         }
 
-        const req = connection.rawConnection.req;
-        const res = connection.rawConnection.res;
-
+        const { req, res } = connection.rawConnection;
         return api.next.handle(req, res);
       },
     };
   }
 
   async start() {
-    if (config.servers.web.enabled !== true) {
-      return;
-    }
+    if (config.servers.web.enabled !== true) return;
 
     if (!config.next.enabled) {
       log("next disabled");
@@ -54,7 +50,7 @@ export class Next extends Initializer {
       );
     }
 
-    // we don't want to statically import next until we know we need it. It loads a lot and has problems in test mode
+    // We don't want to statically import next until we know we need it. It loads a lot and has problems in test mode
     const next = await import("next");
 
     api.next.app = next.default({
@@ -72,8 +68,6 @@ export class Next extends Initializer {
   }
 
   async stop() {
-    if (api.next.app) {
-      await api.next.app.close();
-    }
+    if (api.next.app) await api.next.app.close();
   }
 }
