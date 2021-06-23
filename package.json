@@ -14,9 +14,9 @@
   "homepage": "http://www.actionherojs.com",
   "peerDependencies": {
     "actionhero": ">=22",
-    "next": "^9.x || ^10.x || ^11.x",
-    "react": "^16.6.0 || ^17",
-    "react-dom": "^16.6.0 || ^17"
+    "next": ">=9.0.0",
+    "react": ">=16.6.0",
+    "react-dom": ">=16.6.0"
   },
   "devDependencies": {
     "@types/jest": "^26.0.23",
