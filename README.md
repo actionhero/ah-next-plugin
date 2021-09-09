@@ -47,7 +47,7 @@ export const DEFAULT = {
 
 3. Change your default route in `config/servers/web.ts` to be "api" rather than "file" (we want to pass all file handling over to next)
 4. Change the location of `config.general.paths.public` (in `config/servers/api.ts`) to the public directory in your next.js project. Be sure to make this an array with one entry, for example: `[path.join(process.cwd(), "..", "web", "public")]`)
-5. Create a new `config.general.paths.next` (in `config/servers/api.ts`) to the location of your next.js project. Be sure to make this an array with one entry, for example: `[path.join(process.cwd(), "..", "web")]`)
+5. Create a new `config.general.paths.next` (in `config/servers/api.ts`) to the location of your next.js project. Be sure to make this an array with one entry, for example: `[path.join(process.cwd(), "..", "web")]`) - note that it should be an array. 
 6. Create a new config file for next:
 
 ```ts
@@ -76,16 +76,16 @@ In the `build` step of your project, be sure to also compile the next.js project
 ```json
 {
   "scripts": {
-    "build": "yarn build-api && yarn build-web",
+    "build": "npm run build-api && npm run build-web",
     "build-api": "cd api && rm -rf dist && tsc --declaration",
     "build-web": "cd web && next build",
-    "start": "cd api && actionhero start",
-    "dev": "cd api && ts-node-dev --transpile-only --ignore-watch=\"../web\" --no-deps --notify=false ./../node_modules/.bin/actionhero start",
-    "test": "yarn test-api && yarn test-web",
-    "pretest": "yarn lint && yarn build",
+    "start": "cd api && ./dist/server",
+    "dev": "cd api && ts-node-dev --transpile-only --ignore-watch=\"../web\" --no-deps --notify=false ./src/server",
+    "test": "npm run test-api && npm run test-web",
+    "pretest": "npm run lint && npm run build",
     "test-api": "cd api && jest",
     "test-web": "cd web && jest",
-    "lint": "yarn lint-api && yarn lint-web",
+    "lint": "npm run lint-api && npm run lint-web",
     "lint-api": "cd api && prettier --check src/**/*.ts __tests__/**/*.ts",
     "lint-web": "cd web && prettier --check pages/**/*.tsx components/**/*.tsx __tests__/**/*.tsx"
   }
