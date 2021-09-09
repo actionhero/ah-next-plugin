@@ -20,7 +20,7 @@ The `web` directory is a normal Next.JS project. No changes are needed.
 
 To configure your Actionhero server to also run Next:
 
-1. Add this plugin to your actionhero project `npm install ah-next-plugin` Ensure you also `npm install next react react-com @types/react-dom`. These are peer dependencies of this project:
+1. Add this plugin to your actionhero project `npm install ah-next-plugin`. Ensure you also `npm install next react react-dom` and `npm install --save-dev @types/react-dom` as these are peer dependencies of this project.
 
 2. Include it in your `config/plugins.ts`.
 
