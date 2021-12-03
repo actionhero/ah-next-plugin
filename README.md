@@ -47,18 +47,32 @@ export const DEFAULT = {
 
 3. Change your default route in `config/servers/web.ts` to be "api" rather than "file" (we want to pass all file handling over to next)
 4. Change the location of `config.general.paths.public` (in `config/servers/api.ts`) to the public directory in your next.js project. Be sure to make this an array with one entry, for example: `[path.join(process.cwd(), "..", "web", "public")]`)
-5. Create a new `config.general.paths.next` (in `config/servers/api.ts`) to the location of your next.js project. Be sure to make this an array with one entry, for example: `[path.join(process.cwd(), "..", "web")]`) - note that it should be an array. 
+5. Create a new `config.general.paths.next` (in `config/servers/api.ts`) to the location of your next.js project. Be sure to make this an array with one entry, for example: `[path.join(process.cwd(), "..", "web")]`) - note that it should be an array.
 6. Create a new config file for next:
 
 ```ts
 // from src/config/next.ts
+// learn more about the next.js app options here https://nextjs.org/docs/advanced-features/custom-server
+
+const namespace = "next";
+
+declare module "actionhero" {
+  export interface ActionheroConfigInterface {
+    [namespace]: ReturnType<typeof DEFAULT[typeof namespace]>;
+  }
+}
+
 const env = process.env.NODE_ENV ? process.env.NODE_ENV : "development";
 
 export const DEFAULT = {
-  next: () => {
+  [namespace]: () => {
     return {
       enabled: true,
-      dev: env === "development",
+      dev: process.env.NEXT_DEVELOPMENT_MODE
+        ? process.env.NEXT_DEVELOPMENT_MODE === "false"
+          ? false
+          : true
+        : env === "development",
       quiet: false,
     };
   },
