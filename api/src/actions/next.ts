@@ -1,17 +1,12 @@
-import { Action, api } from "actionhero";
+import { Action, ActionProcessor, ActionheroLogLevel, api } from "actionhero";
 
 export class NextRender extends Action {
-  constructor() {
-    super();
-    this.name = "next:render";
-    this.description = "render react pages via next.js";
-    this.outputExample = {};
-    this.inputs = {};
-    this.logLevel = "debug";
-    this.blockedConnectionTypes = ["websocket", "socket"];
-  }
+  name = "next:render";
+  description = "render react pages via next.js";
+  logLevel = "debug" as ActionheroLogLevel;
+  blockedConnectionTypes = ["websocket", "socket"];
 
-  async run(data) {
+  async run(data: ActionProcessor<any>) {
     if (data.connection.rawConnection.responseHttpCode == 200) {
       data.toRender = false;
       return api.next.render(data.connection);

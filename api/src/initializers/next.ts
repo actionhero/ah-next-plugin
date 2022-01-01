@@ -1,11 +1,11 @@
 import { Initializer, Connection, api, log, config, route } from "actionhero";
-
+import * as http from "http";
 declare module "actionhero" {
   export interface Api {
     next: {
       app?: any;
-      render?: (Connection) => void;
-      handle?: (req, res) => void;
+      render?: (connection: Connection) => void;
+      handle?: (req: http.ClientRequest, res: http.ServerResponse) => void;
     };
   }
 }
