@@ -3,7 +3,7 @@
   "name": "ah-next-plugin",
   "description": "For booting a Next.JS React application inside of Actionhero",
   "license": "Apache-2.0",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "engines": {
     "node": ">=12.0.0"
   },
