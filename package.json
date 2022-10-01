@@ -18,25 +18,25 @@
     "react-dom": ">=16.6.0"
   },
   "devDependencies": {
-    "@babel/runtime": "^7.17.8",
+    "@babel/runtime": "^7.19.0",
     "@types/jest": "^27.4.0",
-    "@types/node": "^18.0.0",
-    "@types/react-dom": "^18.0.3",
+    "@types/node": "^18.7.23",
+    "@types/react-dom": "^18.0.6",
     "@types/request-promise-native": "^1.0.18",
-    "actionhero": "^28.1.2",
-    "ioredis": "^5.0.3",
+    "actionhero": "^28.1.14",
+    "ioredis": "^5.2.3",
     "jest": "^27.4.5",
-    "next": "^12.1.0",
-    "prettier": "^2.5.1",
+    "next": "^12.3.1",
+    "prettier": "^2.7.1",
     "react": "18.x.x",
     "react-dom": "18.x.x",
     "request": "^2.88.2",
     "request-promise-native": "latest",
     "ts-jest": "^27.1.2",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^4.6.3",
-    "winston": "^3.3.3",
-    "ws": "^8.4.0"
+    "typescript": "^4.8.4",
+    "winston": "^3.8.2",
+    "ws": "^8.9.0"
   },
   "scripts": {
     "prepare": "npm run build",
@@ -53,5 +53,8 @@
     "lint": "npm run lint-api && npm run lint-web",
     "lint-api": "cd api && prettier --check src __tests__",
     "lint-web": "cd web && prettier --check pages"
+  },
+  "dependencies": {
+    "@types/glob": "^8.0.0"
   }
 }
