@@ -23,7 +23,7 @@
     "@types/node": "^20.2.5",
     "@types/react-dom": "^18.0.6",
     "@types/request-promise-native": "^1.0.18",
-    "actionhero": "^28.1.14",
+    "actionhero": "^29.0.0",
     "ioredis": "^5.2.3",
     "jest": "^27.4.5",
     "next": "^13.0.1",
