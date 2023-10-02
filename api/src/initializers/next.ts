@@ -46,7 +46,7 @@ export class Next extends Initializer {
 
     if (!config.general.paths.next) {
       throw new Error(
-        "configuration required for `config.general.paths.next = []`"
+        "configuration required for `config.general.paths.next = []`",
       );
     }
 
