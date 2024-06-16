@@ -14,7 +14,7 @@ references:
 jobs:
   build:
     docker:
-      - image: circleci/node:16
+      - image: circleci/node:18
     steps:
       - checkout
       - restore_cache:
@@ -34,7 +34,7 @@ jobs:
 
   linter-api:
     docker:
-      - image: circleci/node:16
+      - image: circleci/node:18
     steps:
       - checkout
       - restore_cache:
@@ -45,7 +45,7 @@ jobs:
 
   linter-web:
     docker:
-      - image: circleci/node:16
+      - image: circleci/node:18
     steps:
       - checkout
       - restore_cache:
@@ -56,7 +56,7 @@ jobs:
 
   test-api:
     docker:
-      - image: circleci/node:16
+      - image: circleci/node:18
       - image: redis:latest
     steps:
       - checkout
@@ -74,7 +74,7 @@ jobs:
 
   test-web:
     docker:
-      - image: circleci/node:16
+      - image: circleci/node:18
       - image: redis:latest
     steps:
       - checkout
@@ -92,7 +92,7 @@ jobs:
 
   complete:
     docker:
-      - image: circleci/node:16
+      - image: circleci/node:18
     steps:
       - run:
           name: complete
